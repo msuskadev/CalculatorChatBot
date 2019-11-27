@@ -1,5 +1,6 @@
 import * as restify from "restify";
-import { BotFrameworkAdapter, TurnContext } from "botbuilder";
+import { BotFrameworkAdapter } from "botbuilder";
+import { calculate } from "./gateway/calculation-service.gateway";
 
 const server = restify.createServer();
 server.get("/test", (req, res) => {
@@ -13,7 +14,13 @@ server.post('/api/messages', (req, res) => {
     });
 
     adapter.processActivity(req, res, async (turnContext) => {
-        return turnContext.sendActivity(`You said ${ turnContext.activity.text }`);
+        const operation = turnContext.activity.text;
+
+        if (!operation) {
+            return;
+        }
+        const result = await calculate(operation);
+        return turnContext.sendActivity(`${ operation } = ${ result }`);
     });    
 });
 
