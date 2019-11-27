@@ -4,14 +4,15 @@
   "description": "",
   "main": "server.ts",
   "scripts": {
-    "start": "tsc && node ./dist/server.js",
+    "build": "tsc",
+    "start": "npm run build && node ./dist/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/msuskadev/CalculatorChatBot.git"
   },
-  "author": "msuskadev84",
+  "author": "msuskadev",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/msuskadev/CalculatorChatBot/issues"
