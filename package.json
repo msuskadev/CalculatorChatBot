@@ -1,0 +1,29 @@
+{
+  "name": "calculatorchatbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.ts",
+  "scripts": {
+    "start": "tsc && node ./dist/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/msuskadev/CalculatorChatBot.git"
+  },
+  "author": "msuskadev84",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/msuskadev/CalculatorChatBot/issues"
+  },
+  "homepage": "https://github.com/msuskadev/CalculatorChatBot#readme",
+  "dependencies": {
+    "botbuilder": "^4.6.2",
+    "restify": "^8.4.1"
+  },
+  "devDependencies": {
+    "@types/node": "^12.12.14",
+    "@types/restify": "^8.4.2",
+    "@types/validator": "^12.0.1"
+  }
+}
