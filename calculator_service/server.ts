@@ -1,8 +1,29 @@
 import * as restify from "restify";
 
 const server = restify.createServer();
-server.get("/calculate", (req, res) => {
-    res.send("calculated");
+
+server.post("/calculate", (req, res) => {
+    const operation = Buffer.from(req.read()).toString();
+    
+    if (operation.indexOf("+") >= 0) {
+        const numbers = operation.split("+");
+        return res.send(200, Number(numbers[0]) + Number(numbers[1]));
+    }
+
+    if (operation.indexOf('-') >= 0) {
+        const numbers = operation.split("-");
+        return res.send(200, Number(numbers[0]) - Number(numbers[1]));
+    }
+
+    if (operation.indexOf('*') >= 0) {
+        const numbers = operation.split("*");
+        return res.send(200, Number(numbers[0]) * Number(numbers[1]));
+    }
+
+    if (operation.indexOf('/') >= 0) {
+        const numbers = operation.split("/");
+        return res.send(200, Number(numbers[0]) / Number(numbers[1]));
+    }
 })
 
 server.listen(3001, () => {
