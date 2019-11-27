@@ -1,0 +1,19 @@
+{
+  "name": "calculator_service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/msuskadev/CalculatorChatBot.git"
+  },
+  "author": "msuskadev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/msuskadev/CalculatorChatBot/issues"
+  },
+  "homepage": "https://github.com/msuskadev/CalculatorChatBot#readme"
+}
