@@ -12,8 +12,8 @@ server.get("/test", (req, res) => {
 
 server.post('/api/messages', (req, res) => {
     const adapter = new BotFrameworkAdapter({
-        //appId: process.env.MICROSOFT_APP_ID,
-        //appPassword: process.env.MICROSOFT_APP_PASSWORD
+        appId: process.env.MICROSOFT_APP_ID,
+        appPassword: process.env.MICROSOFT_APP_PASSWORD
     });
 
     adapter.processActivity(req, res, async (turnContext) => {
