@@ -20,6 +20,7 @@
   "homepage": "https://github.com/msuskadev/CalculatorChatBot#readme",
   "dependencies": {
     "botbuilder": "^4.6.2",
+    "dotenv": "^8.2.0",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.8",
     "restify": "^8.4.1"

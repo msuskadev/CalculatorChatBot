@@ -1,7 +1,10 @@
 import * as restify from "restify";
 import { BotFrameworkAdapter } from "botbuilder";
 import { calculate } from "./gateway/calculation-service.gateway";
+import { config }  from "dotenv";
+import { resolve } from "path";
 
+config({ path: resolve(__dirname, "../.env") });
 const server = restify.createServer();
 server.get("/test", (req, res) => {
     res.send("it works");
@@ -20,10 +23,10 @@ server.post('/api/messages', (req, res) => {
             return;
         }
         const result = await calculate(operation);
-        return turnContext.sendActivity(`${ operation } = ${ result }`);
+        return turnContext.sendActivity(`${ operation }=${ result }`);
     });    
 });
 
-server.listen(3600, () => {
+server.listen(process.env.BOT_PORT || 3600, () => {
     console.log(`\n ${ server.name } listening to ${ server.url }`);
 });
