@@ -7,7 +7,13 @@ import { resolve } from "path";
 config({ path: resolve(__dirname, "../.env") });
 const server = restify.createServer();
 server.get("/test", (req, res) => {
-    res.send("it works");
+    const response = `
+    BOT_PORT=${process.env.BOT_PORT}
+    CALC_SERVICE_URL=${process.env.CALC_SERVICE_URL}
+    MICROSOFT_APP_ID=${process.env.MICROSOFT_APP_ID}
+    MICROSOFT_APP_PASSWORD=${process.env.MICROSOFT_APP_PASSWORD}`;
+
+    res.sendRaw(response);
 })
 
 server.post('/api/messages', (req, res) => {
@@ -16,7 +22,7 @@ server.post('/api/messages', (req, res) => {
         appPassword: process.env.MICROSOFT_APP_PASSWORD
     });
 
-    adapter.processActivity(req, res, async (turnContext) => {
+    adapter.processActivity(req, res, async (turnContext) => {        
         const operation = turnContext.activity.text;
 
         if (!operation) {

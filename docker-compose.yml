@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  calculator-service:
+    build: ./calculator_service
+    ports:
+      - 3001:3001      
+  calculator-bot:
+    build: ./bot
+    environment:
+      - BOT_PORT=3800
+      - CALC_SERVICE_URL=http://calculator-service:3001/calculate
+    ports:
+      - 3800:3800
+    depends_on:
+      - calculator-service
